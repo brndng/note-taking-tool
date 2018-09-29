@@ -3,6 +3,7 @@ export default (state = "", action) => {
     case "TAG_CREATED": {
       return action.payload;
     }
+    default:
+      return state;
   }
-  return state;
 };

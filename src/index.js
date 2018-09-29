@@ -4,19 +4,18 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
-// import allReducers from './reducers';
+import allReducers from "./reducers";
 import registerServiceWorker from "./registerServiceWorker";
 
-// const store = createStore(
-//   allReducers,
-// );
+const store = createStore(allReducers);
+window.store = store;
 
-// ReactDOM.render(
-//   <Provider store={store}>
-//       <App />
-//   </Provider>,
-//   document.getElementById('root')
-// );
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+// ReactDOM.render(<App />, document.getElementById("root"));
 registerServiceWorker();

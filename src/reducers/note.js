@@ -4,6 +4,7 @@ export default (state = {}, action) => {
       const { tags } = action.payload;
       return { tags: tags.map(tag => tag), ...action.payload };
     }
+    default:
+      return { ...state };
   }
-  return state;
 };

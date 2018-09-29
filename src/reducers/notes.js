@@ -11,6 +11,7 @@ export default (state = [], action) => {
       };
       return [...newState, newNote];
     }
+    default:
+      return newState;
   }
-  return newState;
 };

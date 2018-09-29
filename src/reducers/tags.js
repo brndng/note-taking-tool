@@ -5,6 +5,7 @@ export default (state = [], action) => {
     case "TAG_CREATED": {
       return [...newState, action.payload];
     }
+    default:
+      return newState;
   }
-  return newState;
 };
