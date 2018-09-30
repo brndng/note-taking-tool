@@ -5,6 +5,13 @@ export const createNote = note => {
   };
 };
 
+export const editNote = text => {
+  return {
+    type: "NOTE_EDITED",
+    payload: text
+  };
+};
+
 export const createTag = tag => {
   return {
     type: "TAG_CREATED",

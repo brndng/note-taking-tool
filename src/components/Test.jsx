@@ -4,14 +4,14 @@ import { bindActionCreators } from "redux";
 import { createNote, createTag } from "../actions";
 
 class Test extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { createNote, createTag } = this.props;
-    createNote({ tags: [], text: "helllooo", id: 1 });
-    createTag("testtag");
+    createNote({ tags: [], text: "hey", id: 1 });
+    createNote({ tags: [], text: "sup", id: 2 });
+    createNote({ tags: [], text: "bye", id: 3 });
+    createTag("tag1");
+    createTag("tag2");
+    createTag("tag3");
   }
 
   render() {

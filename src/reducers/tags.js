@@ -6,6 +6,6 @@ export default (state = [], action) => {
       return [...newState, action.payload];
     }
     default:
-      return newState;
+      return state;
   }
 };

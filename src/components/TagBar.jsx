@@ -2,7 +2,12 @@ import React, { Component } from "react";
 
 class TagBar extends Component {
   render() {
-    return <div>Hello from TagBar!!</div>;
+    return (
+      <div>
+        TagBar
+        <input type="form" />
+      </div>
+    );
   }
 }
 

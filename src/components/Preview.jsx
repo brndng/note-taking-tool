@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Preview extends Component {
   render() {
-    return <div>Preview!!</div>;
+    return <li>{this.props.note.text}</li>;
   }
 }
 
