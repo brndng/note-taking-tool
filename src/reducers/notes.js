@@ -1,14 +1,9 @@
 export default (state = {}, action) => {
-  // const newState = state.map(note => {
-  //   return { ...note, tags: note.tags.map(tag => tag) };
-  // });
   const newState = {};
   for (let id in state) {
     const note = state[id];
-    newState[id] = { ...note, tags: note.tags.map(tag => tag) };
+    newState[id] = { ...note, tags: { ...state.tags } };
   }
-
-  console.log("newState from notes reducer", newState);
 
   switch (action.type) {
     case "NOTE_CREATED": {
@@ -22,9 +17,15 @@ export default (state = {}, action) => {
     case "NOTE_EDITED": {
       const { id, text } = action.payload;
       const noteCopy = newState[id];
-      noteCopy.text = text;
-
-      return { ...newState, [id]: noteCopy };
+      return { ...newState, [id]: { ...noteCopy, text } };
+    }
+    case "TAG_ADDED": {
+      const { id, tag } = action.payload;
+      const noteCopy = newState[id];
+      return {
+        ...newState,
+        [id]: { ...noteCopy, tags: { ...noteCopy.tags, [tag]: tag } }
+      };
     }
     default:
       return state;

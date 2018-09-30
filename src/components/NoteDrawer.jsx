@@ -9,7 +9,7 @@ class NoteDrawer extends Component {
       <div>
         NoteDrawer!!
         <ul>
-          {tags.map((tag, i) => (
+          {Object.values(tags).map((tag, i) => (
             <Category tag={tag} key={i} />
           ))}
         </ul>

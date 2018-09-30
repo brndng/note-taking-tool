@@ -4,12 +4,9 @@ import { bindActionCreators } from "redux";
 import { editNote } from "../actions";
 
 class TextEditor extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { noteId, notes, editNote } = this.props;
+    console.log("notes, noteId", notes, noteId);
 
     const text = notes[noteId] ? notes[noteId].text : ""; //TODO: find a better way
 
