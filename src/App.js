@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import Test from "./components/Test";
+import SideBar from "../src/components/SideBar";
+import PreviewList from "../src/components/PreviewList";
+import CurrentNote from "../src/components/CurrentNote";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Test />
+        <SideBar />
+        <PreviewList />
+        <CurrentNote />
       </div>
     );
   }
