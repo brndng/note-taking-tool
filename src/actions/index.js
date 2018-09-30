@@ -1,7 +1,10 @@
 export const createNote = note => {
+  const uniqueDate = new Date();
+  const id = uniqueDate.valueOf();
+
   return {
     type: "NOTE_CREATED",
-    payload: note
+    payload: { text: "", tags: [], id }
   };
 };
 

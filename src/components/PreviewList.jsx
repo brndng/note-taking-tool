@@ -14,8 +14,8 @@ class PreviewList extends Component {
           <Search /> <AddButton />
         </div>
         <ul>
-          {notes.map((note, i) => (
-            <Preview note={note} key={i} />
+          {Object.entries(notes).map(note => (
+            <Preview note={note[1]} key={note[0]} />
           ))}
         </ul>
       </div>

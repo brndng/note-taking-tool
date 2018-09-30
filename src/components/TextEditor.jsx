@@ -12,19 +12,19 @@ class TextEditor extends Component {
     // initial note should be store.note (curr)
   }
   render() {
-    const { note, editNote } = this.props;
+    const { editNote } = this.props;
 
     return (
       <div>
         Hello from TextEditor!!{" "}
-        <textarea value={note.text} onChange={e => editNote(e.target.value)} />
+        {/* <textarea value={note.text} onChange={e => editNote(e.target.value)} /> */}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ note }) => {
-  return { note };
+const mapStateToProps = ({ noteId }) => {
+  return { noteId };
 };
 
 const matchDispatchToProps = dispatch => {
