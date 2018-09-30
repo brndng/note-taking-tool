@@ -6,9 +6,9 @@ import { createNote, createTag } from "../actions";
 class Test extends Component {
   componentDidMount() {
     const { createNote, createTag } = this.props;
-    createNote({ tags: [], text: "hey", id: 1 });
-    createNote({ tags: [], text: "sup", id: 2 });
-    createNote({ tags: [], text: "bye", id: 3 });
+    createNote({ tags: [], text: "hey" });
+    createNote({ tags: [], text: "sup" });
+    createNote({ tags: [], text: "bye" });
     createTag("tag1");
     createTag("tag2");
     createTag("tag3");

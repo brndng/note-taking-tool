@@ -1,17 +1,17 @@
-export const createNote = note => {
+export const createNote = () => {
   const uniqueDate = new Date();
   const id = uniqueDate.valueOf();
 
   return {
     type: "NOTE_CREATED",
-    payload: { text: "", tags: [], id }
+    payload: { id, text: "", tags: [] }
   };
 };
 
-export const editNote = text => {
+export const editNote = (id, text) => {
   return {
     type: "NOTE_EDITED",
-    payload: text
+    payload: { id, text }
   };
 };
 

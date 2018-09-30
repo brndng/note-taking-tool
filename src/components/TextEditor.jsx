@@ -8,23 +8,24 @@ class TextEditor extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    // initial note should be store.note (curr)
-  }
   render() {
-    const { editNote } = this.props;
+    const { noteId, notes, editNote } = this.props;
+
+    const text = notes[noteId] ? notes[noteId].text : ""; //TODO: find a better way
 
     return (
       <div>
-        Hello from TextEditor!!{" "}
-        {/* <textarea value={note.text} onChange={e => editNote(e.target.value)} /> */}
+        <textarea
+          value={text}
+          onChange={e => editNote(noteId, e.target.value)}
+        />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ noteId }) => {
-  return { noteId };
+const mapStateToProps = ({ noteId, notes }) => {
+  return { noteId, notes };
 };
 
 const matchDispatchToProps = dispatch => {
@@ -35,5 +36,3 @@ export default connect(
   mapStateToProps,
   matchDispatchToProps
 )(TextEditor);
-
-// export default TextEditor;
