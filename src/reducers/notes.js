@@ -2,10 +2,13 @@ export default (state = {}, action) => {
   const newState = {};
   for (let id in state) {
     const note = state[id];
-    newState[id] = { ...note, tags: { ...state.tags } };
+    newState[id] = { ...note, tags: { ...note.tags } };
   }
 
   switch (action.type) {
+    case "APP_LOADED": {
+      return action.payload.notes;
+    }
     case "NOTE_CREATED": {
       const { id, text, tags } = action.payload;
       const newNote = {

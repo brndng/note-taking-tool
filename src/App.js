@@ -1,14 +1,20 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import SideBar from "../src/components/SideBar";
 import PreviewList from "../src/components/PreviewList";
 import CurrentNote from "../src/components/CurrentNote";
-import Test from "../src/components/Test";
+import { loadInitialState } from '../src/actions'
 
 class App extends Component {
+  componentDidMount() {
+    const { loadInitialState } = this.props;
+    loadInitialState();
+  }
+
   render() {
     return (
       <div className="App">
-        <Test />
         <SideBar />
         <PreviewList />
         <CurrentNote />
@@ -17,4 +23,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const matchDispatchToProps = dispatch => {
+  return bindActionCreators({ loadInitialState }, dispatch);
+};
+
+export default connect(
+  null,
+  matchDispatchToProps
+)(App);

@@ -5,24 +5,21 @@ import { editNote } from "../actions";
 
 class TextEditor extends Component {
   render() {
-    const { noteId, notes, editNote } = this.props;
-    console.log("notes, noteId", notes, noteId);
-
-    const text = notes[noteId] ? notes[noteId].text : ""; //TODO: find a better way
-
+    const { id, notes, editNote } = this.props;
+    const text = notes[id] ? notes[id].text : "";
     return (
       <div>
         <textarea
           value={text}
-          onChange={e => editNote(noteId, e.target.value)}
+          onChange={e => editNote(id, e.target.value)}
         />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ noteId, notes }) => {
-  return { noteId, notes };
+const mapStateToProps = ({ id, notes }) => {
+  return { id, notes };
 };
 
 const matchDispatchToProps = dispatch => {

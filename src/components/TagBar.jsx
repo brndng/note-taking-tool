@@ -16,8 +16,8 @@ class TagBar extends Component {
   }
 
   handleClick() {
-    const { addTag, noteId } = this.props;
-    addTag(noteId, this.state.value);
+    const { addTag, id } = this.props;
+    addTag(id, this.state.value);
   }
 
   render() {
@@ -36,8 +36,8 @@ class TagBar extends Component {
   }
 }
 
-const mapStateToProps = ({ noteId }) => {
-  return { noteId };
+const mapStateToProps = ({ id }) => {
+  return { id };
 };
 
 const matchDispatchToProps = dispatch => {
