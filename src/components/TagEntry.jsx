@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addTag } from "../actions";
 
-class TagBar extends Component {
+class TagEntry extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,7 @@ class TagBar extends Component {
     //TODO: change to onSubmit with e.preventDefault()
     return (
       <div>
-        TagBar
+        TagEntry
         <input
           type="text"
           value={this.state.value}
@@ -47,4 +47,4 @@ const matchDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   matchDispatchToProps
-)(TagBar);
+)(TagEntry);

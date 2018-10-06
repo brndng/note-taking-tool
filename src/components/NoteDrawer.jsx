@@ -9,11 +9,12 @@ class NoteDrawer extends Component {
       <div>
         NoteDrawer!!
         <ul>
+          <Category tag={null}>'All'</Category>
           {Object.values(tags).map((tag, i) => (
-            <Category tag={tag} key={i} />
+            <Category tag={tag} key={i}>{tag}</Category>
           ))}
         </ul>
-      </div>
+      </div >
     );
   }
 }

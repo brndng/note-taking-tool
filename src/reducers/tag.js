@@ -3,9 +3,6 @@ export default (state = "", action) => {
     case "APP_LOADED": {
       return action.payload.tag;
     }
-    case "TAG_ADDED": {
-      return action.payload.tag;
-    }
     case "TAG_SELECTED": {
       return action.payload;
     }

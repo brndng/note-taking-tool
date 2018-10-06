@@ -3,11 +3,16 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { createNote } from "../actions";
 
-class AddButton extends Component {
+
+class CreateNoteButton extends Component {
   render() {
-    const { createNote } = this.props;
-    return <button onClick={createNote}>Add button</button>;
+    const { tag, createNote } = this.props;
+    return <button onClick={() => createNote(tag)}>Create Note</button>;
   }
+}
+
+const mapStateToProps = ({ tag }) => {
+  return { tag };
 }
 
 const matchDispatchToProps = dispatch => {
@@ -15,8 +20,6 @@ const matchDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   matchDispatchToProps
-)(AddButton);
-
-// export default AddButton;
+)(CreateNoteButton);

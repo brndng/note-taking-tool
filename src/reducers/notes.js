@@ -1,33 +1,27 @@
+import deepClone from '../lib';
+
 export default (state = {}, action) => {
-  const newState = {};
-  for (let id in state) {
-    const note = state[id];
-    newState[id] = { ...note, tags: { ...note.tags } };
-  }
+  const newState = deepClone(state);
 
   switch (action.type) {
     case "APP_LOADED": {
       return action.payload.notes;
     }
     case "NOTE_CREATED": {
-      const { id, text, tags } = action.payload;
-      const newNote = {
-        text,
-        tags
-      };
-      return { ...newState, [id]: newNote };
+      const { id } = action.payload;
+      return { ...newState, [id]: action.payload };
     }
     case "NOTE_EDITED": {
       const { id, text } = action.payload;
-      const noteCopy = newState[id];
-      return { ...newState, [id]: { ...noteCopy, text } };
+      const note = newState[id];
+      return { ...newState, [id]: { ...note, text } };
     }
     case "TAG_ADDED": {
       const { id, tag } = action.payload;
-      const noteCopy = newState[id];
+      const note = newState[id];
       return {
         ...newState,
-        [id]: { ...noteCopy, tags: { ...noteCopy.tags, [tag]: tag } }
+        [id]: { ...note, tags: { ...note.tags, [tag]: tag } }
       };
     }
     default:

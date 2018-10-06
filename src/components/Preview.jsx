@@ -5,8 +5,8 @@ import { selectNote } from "../actions";
 
 class Preview extends Component {
   render() {
-    const { id, note, selectNote } = this.props;
-    return <li onClick={() => selectNote(id)}>{note.text}</li>;
+    const { note, selectNote } = this.props;
+    return <li onClick={() => selectNote(note.id)}>{note.text}</li>;
   }
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Preview from "./Preview";
-import AddButton from "./AddButton";
+import CreateNoteButton from "./CreateNoteButton";
 import Search from "./Search";
 import { selectNote } from '../actions';
 
@@ -11,31 +11,28 @@ class PreviewList extends Component {
     const { selectNote, tag } = this.props;
     const taggedNotes = this.getTaggedNotes();
     if (taggedNotes.length && tag !== prevProps.tag) {
-      const [id,] = taggedNotes[0];
+      const { id } = taggedNotes[0];
       selectNote(id);
     }
   }
 
   getTaggedNotes() {
     const { notes, tag } = this.props;
-    return Object.entries(notes).reverse().filter(entry => {
-      const [, note] = entry;
-      return !!note.tags[tag];
+    return Object.values(notes).reverse().filter(note => {
+      return !tag || note.tags[tag];
     });
   }
 
   render() {
-    const { notes, tag } = this.props;
     return (
       <div>
         Preview List
         <div>
-          <Search /> <AddButton />
+          <Search /> <CreateNoteButton />
         </div>
         <ul>
-          {this.getTaggedNotes().map(entry => {
-            const [id, note] = entry;
-            return <Preview note={note} id={id} key={id} />;
+          {this.getTaggedNotes().map((note, i) => {
+            return <Preview note={note} key={i} />;
           })}
         </ul>
       </div>

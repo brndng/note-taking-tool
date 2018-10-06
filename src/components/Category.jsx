@@ -6,7 +6,7 @@ import { selectTag } from "../actions";
 class Category extends Component {
   render() {
     const { tag, selectTag } = this.props;
-    return <div onClick={() => selectTag(tag)}>{tag}</div>;
+    return <div onClick={() => selectTag(tag)}>{this.props.children}</div>;
   }
 }
 
