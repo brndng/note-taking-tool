@@ -9,12 +9,10 @@ class TagDisplay extends Component {
     const { id, notes, deleteTag } = this.props;
     return (
       <div>
-        TagDisplay
-        <ul>
-          {getTagsById(notes, id).map((tag, i) => {
-            return (<li onClick={() => deleteTag(id, tag)} key={i}>{tag}</li>)
-          })}
-        </ul>
+        <strong>TagDisplay</strong>
+        {getTagsById(notes, id).map((tag, i) => {
+          return (<span onClick={() => deleteTag(id, tag)} key={i}>{tag}</span>)
+        })}
       </div>
     );
   }

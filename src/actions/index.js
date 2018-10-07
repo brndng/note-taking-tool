@@ -3,19 +3,19 @@ export const loadInitialState = () => {
   return {
     type: "INIT_APP",
     payload: {
-      id: 1,
+      id: 8,
       notes: {
-        1: { id: 1, text: 'thoughts about bears1', tags: { bear: 'bear' }, isActive: true },
-        2: { id: 2, text: 'bear dreams2', tags: { bear: 'bear' }, isActive: true },
-        3: { id: 3, text: 'cats!', tags: { cat: 'cat' }, isActive: true },
-        4: { id: 4, text: 'dog notes', tags: { dog: 'dog' }, isActive: true },
-        5: { id: 5, text: 'bears3', tags: { bear: 'bear' }, isActive: true },
-        6: { id: 6, text: 'bears4', tags: { bear: 'bear' }, isActive: true },
-        7: { id: 7, text: 'second cats!', tags: { cat: 'cat' }, isActive: true },
-        8: { id: 8, text: 'most recent cats!', tags: { cat: 'cat' }, isActive: true },
+        1: { id: 1, text: 'thoughts about bears1', tags: { bear: 'bear' } },
+        2: { id: 2, text: 'bear dreams2', tags: { bear: 'bear' } },
+        3: { id: 3, text: 'cats!', tags: { cat: 'cat' } },
+        4: { id: 4, text: 'dog notes', tags: { dog: 'dog' } },
+        5: { id: 5, text: 'bears3', tags: { bear: 'bear' } },
+        6: { id: 6, text: 'bears4', tags: { bear: 'bear' } },
+        7: { id: 7, text: 'second cats!', tags: { cat: 'cat' } },
+        8: { id: 8, text: 'most recent cats!', tags: { cat: 'cat' } },
       },
-      tag: 'bear',
-    }
+      tag: null,
+    },
   };
 }
 
@@ -26,7 +26,7 @@ export const createNote = (currentTag) => {
 
   return {
     type: "CREATE_NOTE",
-    payload: { id, text: "", tags, isActive: true }
+    payload: { id, text: "", tags }
   };
 };
 
@@ -65,10 +65,31 @@ export const selectNote = id => {
   };
 };
 
-export const markForTrash = (id) => {
+export const trashNote = (id) => {
   return {
     type: "TRASH_NOTE",
     payload: id
+  };
+}
+
+export const restoreNote = (id) => {
+  return {
+    type: "RESTORE_NOTE",
+    payload: id
+  };
+}
+
+export const deleteNote = (id) => {
+  return {
+    type: "DELETE_NOTE",
+    payload: id
+  };
+}
+
+export const toggleView = (status) => {
+  return {
+    type: "TOGGLE_VIEW",
+    payload: status
   };
 }
 

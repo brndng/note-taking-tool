@@ -5,7 +5,7 @@ class SideBar extends Component {
   render() {
     return (
       <div>
-        SideBar <NoteDrawer />
+        <NoteDrawer />
       </div>
     );
   }

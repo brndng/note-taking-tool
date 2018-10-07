@@ -4,23 +4,30 @@ import { bindActionCreators } from "redux";
 import { editNote } from "../actions";
 
 class TextEditor extends Component {
-  //display current note logic here
+  renderTextArea() {
+    const { id, notes, tag, editNote } = this.props;
+    const text = (notes[id] && !notes[id].tags.trash) && notes[id].text;
+    const onChange = (e) => editNote(id, e.target.value);
+    const disabled = tag === 'trash';
+
+    return <textarea
+      value={text}
+      onChange={onChange}
+      disabled={disabled}
+    />
+  }
   render() {
-    const { id, notes, editNote } = this.props;
-    const text = notes[id] ? notes[id].text : "";
     return (
       <div>
-        <textarea
-          value={text}
-          onChange={e => editNote(id, e.target.value)}
-        />
+        <strong>Text Editor</strong>
+        {this.renderTextArea()}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ id, notes }) => {
-  return { id, notes };
+const mapStateToProps = ({ id, notes, tag }) => {
+  return { id, notes, tag };
 };
 
 const matchDispatchToProps = dispatch => {

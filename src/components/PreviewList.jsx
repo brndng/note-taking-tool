@@ -5,19 +5,19 @@ import Preview from "./Preview";
 import CreateNoteButton from "./CreateNoteButton";
 import Search from "./Search";
 import { selectNote } from '../actions';
-import { getTaggedNotes } from "../helpers"
+import { getNotesByTag } from "../helpers"
 
 class PreviewList extends Component {
   render() {
     const { notes, tag } = this.props;
     return (
       <div>
-        Preview List
+        <strong>Preview List</strong>
         <div>
           <Search /> <CreateNoteButton />
         </div>
         <ul>
-          {getTaggedNotes(notes, tag).map((note, i) => {
+          {getNotesByTag(notes, tag).map((note, i) => {
             return <Preview note={note} key={i} />;
           })}
         </ul>

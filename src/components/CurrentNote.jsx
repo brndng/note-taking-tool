@@ -3,18 +3,16 @@ import TagEntry from "./TagEntry";
 import TextEditor from "./TextEditor";
 import TagDisplay from "./TagDisplay";
 import TrashButton from "./TrashButton";
-import Trash from './Trash';
 
 class CurrentNote extends Component {
   render() {
     return (
       <div>
-        Hello from CurrentNote!!
+        <strong>Current Note</strong>
         <TagEntry />
         <TagDisplay />
         <TrashButton />
         <TextEditor />
-        <Trash />
       </div>
     );
   }

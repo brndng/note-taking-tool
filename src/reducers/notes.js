@@ -29,7 +29,7 @@ export default (state = {}, action) => {
 
     case "TRASH_NOTE": {
       const id = action.payload;
-      newState[id].isActive = false;
+      newState[id].tags.trash = 'trash';
       return newState;
     }
     default:

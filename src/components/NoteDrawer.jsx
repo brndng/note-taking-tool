@@ -8,12 +8,13 @@ class NoteDrawer extends Component {
     const { notes } = this.props;
     return (
       <div>
-        NoteDrawer!!
+        <strong>NoteDrawer</strong>
         <ul>
           <Category tag={null}>All</Category>
           {getAllTags(notes).map((tag, i) => (
-            <Category tag={tag} key={i}>{tag}</Category>
+            tag !== 'trash' && <Category tag={tag} key={i}>{tag}</Category>
           ))}
+          <Category tag={'trash'}>Trash</Category>
         </ul>
       </div >
     );

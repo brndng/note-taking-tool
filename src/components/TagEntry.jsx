@@ -18,6 +18,7 @@ class TagEntry extends Component {
   handleClick() {
     const { addTag, id } = this.props;
     addTag(id, this.state.value);
+    this.setState({ value: "" })
   }
 
   render() {
@@ -30,7 +31,7 @@ class TagEntry extends Component {
           value={this.state.value}
           onChange={e => this.handleChange(e)}
         />
-        <button onClick={() => this.handleClick()} />
+        <button onClick={() => this.handleClick()}>Enter</button>
       </div>
     );
   }

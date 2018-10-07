@@ -6,11 +6,15 @@ export function deepClone(original, clone = {}) {
   return clone;
 }
 
+export function getAllNotes(notes) {
+  return Object.values(notes).reverse();
+}
+
 export function getAllTags(notes) {
   const tags = {};
   for (let id in notes) {
     for (let tag in notes[id].tags) {
-      tags[tag] = tag;
+      if (!notes[id].tags.trash) tags[tag] = tag;
     }
   }
   return Object.values(tags);
@@ -20,14 +24,43 @@ export function getTagsById(notes, id) {
   return notes[id] ? Object.values(notes[id].tags) : [];
 }
 
-export function getTaggedNotes(notes, tag) {
+export function getNotesByTag(notes, tag) {
   return Object.values(notes).filter(note => {
-    return note.isActive && (!tag || note.tags[tag]);
+    return (!tag && !note.tags.trash)
+      || (tag === 'trash' && note.tags.trash)
+      || (tag !== 'trash' && !note.tags.trash && note.tags[tag]);
   }).reverse();
 }
 
 export function getInactiveNotes(notes) {
   return Object.values(notes).filter(note => {
-    return !note.isActive;
+    return !note.tags.trash;
   }).reverse();
+}
+
+export function getNextNote(id, notes, tag) {
+  const taggedNotes = getNotesByTag(notes, tag);
+  const allNotes = getAllNotes(notes);
+
+  if (taggedNotes.length < 2) {
+    if (allNotes.length) {
+      return allNotes[0];
+    }
+    return null;
+  }
+
+  for (let note of taggedNotes) {
+    if (note.id !== id) return note;
+  }
+  return null;
+}
+
+export function isOnlyNoteByTag(notes, id, tag) {
+  const clonedNotes = deepClone(notes);
+  delete clonedNotes[id];
+
+  for (let id in clonedNotes) {
+    if (clonedNotes[id].tags[tag] && !clonedNotes[id].tags.trash) return false;
+  }
+  return true;
 }
