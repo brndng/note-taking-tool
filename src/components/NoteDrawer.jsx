@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Category from "./Category";
+import { getAllTags } from "../helpers";
 
 class NoteDrawer extends Component {
   render() {
-    const { tags } = this.props;
+    const { notes } = this.props;
     return (
       <div>
         NoteDrawer!!
         <ul>
-          <Category tag={null}>'All'</Category>
-          {Object.values(tags).map((tag, i) => (
+          <Category tag={null}>All</Category>
+          {getAllTags(notes).map((tag, i) => (
             <Category tag={tag} key={i}>{tag}</Category>
           ))}
         </ul>
@@ -19,10 +20,8 @@ class NoteDrawer extends Component {
   }
 }
 
-const mapStateToProps = ({ tags }) => {
-  return { tags };
+const mapStateToProps = ({ notes }) => {
+  return { notes };
 };
 
 export default connect(mapStateToProps)(NoteDrawer);
-
-// export default NoteDrawer;

@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { createNote } from "../actions";
 
-
 class CreateNoteButton extends Component {
   render() {
     const { tag, createNote } = this.props;

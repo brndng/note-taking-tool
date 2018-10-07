@@ -1,30 +1,38 @@
-import deepClone from '../lib';
+import { deepClone } from '../helpers';
 
 export default (state = {}, action) => {
   const newState = deepClone(state);
-
   switch (action.type) {
-    case "APP_LOADED": {
+    case "INIT_APP": {
       return action.payload.notes;
     }
-    case "NOTE_CREATED": {
+    case "CREATE_NOTE": {
       const { id } = action.payload;
       return { ...newState, [id]: action.payload };
     }
-    case "NOTE_EDITED": {
+    case "EDIT_NOTE": {
       const { id, text } = action.payload;
       const note = newState[id];
       return { ...newState, [id]: { ...note, text } };
     }
-    case "TAG_ADDED": {
+    case "ADD_TAG": {
       const { id, tag } = action.payload;
-      const note = newState[id];
-      return {
-        ...newState,
-        [id]: { ...note, tags: { ...note.tags, [tag]: tag } }
-      };
+      newState[id].tags[tag] = tag;
+      return newState;
+    }
+    case "DELETE_TAG": {
+      const { id, tag } = action.payload;
+      const { tags } = newState[id];
+      delete tags[tag]
+      return newState;
+    }
+
+    case "TRASH_NOTE": {
+      const id = action.payload;
+      newState[id].isActive = false;
+      return newState;
     }
     default:
-      return state;
+      return newState;
   }
 };

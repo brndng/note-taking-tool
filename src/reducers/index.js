@@ -1,12 +1,6 @@
 import { combineReducers } from "redux";
-import id from "./note-id";
 import notes from "./notes";
+import id from "./note-id";
 import tag from "./tag";
-import tags from "./tags";
 
-export default combineReducers({
-  id,
-  notes,
-  tag,
-  tags
-});
+export default combineReducers({ notes, id, tag });

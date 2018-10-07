@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { selectTag } from "../actions";
+import { selectTag, selectNote } from "../actions";
+import { getTaggedNotes } from "../helpers";
 
 class Category extends Component {
+  updateIdentifiers() {
+    const { notes, tag, selectTag, selectNote } = this.props;
+    const { id } = getTaggedNotes(notes, tag)[0];
+    selectTag(tag);
+    selectNote(id);
+  }
+
   render() {
-    const { tag, selectTag } = this.props;
-    return <div onClick={() => selectTag(tag)}>{this.props.children}</div>;
+    return <div onClick={() => this.updateIdentifiers()}>{this.props.children}</div>;
   }
 }
 
@@ -15,7 +22,7 @@ const mapStateToProps = ({ notes }) => {
 };
 
 const matchDispatchToProps = dispatch => {
-  return bindActionCreators({ selectTag }, dispatch);
+  return bindActionCreators({ selectTag, selectNote }, dispatch);
 };
 
 export default connect(

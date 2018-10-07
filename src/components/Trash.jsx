@@ -1,9 +1,32 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import Preview from './Preview';
+import { selectNote } from '../actions';
+import { getInactiveNotes } from "../helpers";
 
 class Trash extends Component {
   render() {
-    return <div>Hello from Trash!!</div>;
+    const { notes } = this.props;
+    return (
+      <div>
+        Trash!
+        <ul>
+          {getInactiveNotes(notes).map((note, i) => {
+            return <Preview note={note} key={i} />;
+          })}
+        </ul>
+      </div>
+    );
   }
 }
 
-export default Trash;
+const mapStateToProps = ({ notes }) => {
+  return { notes };
+}
+
+const matchDispatchToProps = dispatch => {
+  return bindActionCreators({ selectNote }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Trash);

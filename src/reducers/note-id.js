@@ -1,12 +1,12 @@
 export default (state = "", action) => {
   switch (action.type) {
-    case "APP_LOADED": {
+    case "INIT_APP": {
       return action.payload.id;
     }
-    case "NOTE_CREATED": {
+    case "CREATE_NOTE": {
       return action.payload.id;
     }
-    case "NOTE_SELECTED": {
+    case "SELECT_NOTE": {
       return action.payload;
     }
     default:

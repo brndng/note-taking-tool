@@ -5,25 +5,11 @@ import Preview from "./Preview";
 import CreateNoteButton from "./CreateNoteButton";
 import Search from "./Search";
 import { selectNote } from '../actions';
+import { getTaggedNotes } from "../helpers"
 
 class PreviewList extends Component {
-  componentDidUpdate(prevProps) {
-    const { selectNote, tag } = this.props;
-    const taggedNotes = this.getTaggedNotes();
-    if (taggedNotes.length && tag !== prevProps.tag) {
-      const { id } = taggedNotes[0];
-      selectNote(id);
-    }
-  }
-
-  getTaggedNotes() {
-    const { notes, tag } = this.props;
-    return Object.values(notes).reverse().filter(note => {
-      return !tag || note.tags[tag];
-    });
-  }
-
   render() {
+    const { notes, tag } = this.props;
     return (
       <div>
         Preview List
@@ -31,7 +17,7 @@ class PreviewList extends Component {
           <Search /> <CreateNoteButton />
         </div>
         <ul>
-          {this.getTaggedNotes().map((note, i) => {
+          {getTaggedNotes(notes, tag).map((note, i) => {
             return <Preview note={note} key={i} />;
           })}
         </ul>

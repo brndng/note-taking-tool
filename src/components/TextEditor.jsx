@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import { editNote } from "../actions";
 
 class TextEditor extends Component {
+  //display current note logic here
   render() {
     const { id, notes, editNote } = this.props;
     const text = notes[id] ? notes[id].text : "";
