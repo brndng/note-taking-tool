@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { selectTag, selectNote } from "../actions";
+import { setTag, setNoteId } from "../actions";
 import { getMostRecentId } from "../helpers";
 
 class Category extends Component {
   loadCategory() {
-    const { notes, tag, selectTag, selectNote } = this.props;
+    const { notes, tag, setTag, setNoteId } = this.props;
     const id = getMostRecentId(notes, tag);
-    selectTag(tag);
-    selectNote(id);
+    setTag(tag);
+    setNoteId(id);
   }
 
   render() {
@@ -22,7 +22,7 @@ const mapStateToProps = ({ notes }) => {
 };
 
 const matchDispatchToProps = dispatch => {
-  return bindActionCreators({ selectTag, selectNote }, dispatch);
+  return bindActionCreators({ setTag, setNoteId }, dispatch);
 };
 
 export default connect(

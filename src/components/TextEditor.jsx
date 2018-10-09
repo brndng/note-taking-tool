@@ -2,25 +2,28 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { editNote } from "../actions";
-import { getNoteText, isTrash } from "../helpers";
+import { getNoteText, getNotesByTag, isTrash } from "../helpers";
 
 class TextEditor extends Component {
-  renderCurrentText() {
+  renderTextArea() {
     const { id, notes, tag, editNote } = this.props;
-    return (
+    const numberOfNotes = getNotesByTag(notes, tag).length;
+    return numberOfNotes > 0 ? (
       <textarea
         value={getNoteText(notes, id)}
         placeholder="..."
         onChange={e => editNote(id, e.target.value)}
         disabled={isTrash(tag)}
       />
+    ) : (
+      "No notes!"
     );
   }
   render() {
     return (
       <div>
         <strong>Text Editor</strong>
-        {this.renderCurrentText()}
+        {this.renderTextArea()}
       </div>
     );
   }

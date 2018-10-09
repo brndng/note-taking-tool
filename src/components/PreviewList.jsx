@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import Preview from "./Preview";
 import CreateNoteButton from "./CreateNoteButton";
 import Search from "./Search";
-import { selectNote } from "../actions";
 import { getNotesByTag } from "../helpers";
 
 class PreviewList extends Component {
@@ -30,11 +28,4 @@ const mapStateToProps = ({ notes, tag }) => {
   return { notes, tag };
 };
 
-const matchDispatchToProps = dispatch => {
-  return bindActionCreators({ selectNote }, dispatch);
-};
-
-export default connect(
-  mapStateToProps,
-  matchDispatchToProps
-)(PreviewList);
+export default connect(mapStateToProps)(PreviewList);

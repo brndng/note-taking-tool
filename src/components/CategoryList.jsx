@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import Category from "./Category";
 import { getAllTags, isTrash } from "../helpers";
 
-class NoteDrawer extends Component {
+class CategoryList extends Component {
   render() {
     const { notes } = this.props;
     return (
       <div>
-        <strong>NoteDrawer</strong>
+        <strong>CategoryList</strong>
         <ul>
           <Category tag={null}>All</Category>
           {getAllTags(notes).map(
@@ -30,4 +30,4 @@ const mapStateToProps = ({ notes }) => {
   return { notes };
 };
 
-export default connect(mapStateToProps)(NoteDrawer);
+export default connect(mapStateToProps)(CategoryList);

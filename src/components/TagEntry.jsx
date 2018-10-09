@@ -24,18 +24,15 @@ class TagEntry extends Component {
 
   render() {
     return (
-      <div>
-        TagEntry
-        <form onSubmit={e => this.submitTag(e)}>
-          <input
-            type="text"
-            placeholder="enter tag"
-            value={this.state.value}
-            onChange={e => this.setText(e)}
-          />
-          <button type="submit">Enter</button>
-        </form>
-      </div>
+      <form onSubmit={e => this.submitTag(e)}>
+        <input
+          type="text"
+          placeholder="enter tag"
+          value={this.state.value}
+          onChange={e => this.setText(e)}
+        />
+        <button type="submit">Enter</button>
+      </form>
     );
   }
 }

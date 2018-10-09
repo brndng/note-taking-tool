@@ -3,7 +3,7 @@ export default (state = "", action) => {
     case "INIT_APP": {
       return action.payload.tag;
     }
-    case "SELECT_TAG": {
+    case "SET_TAG": {
       return action.payload;
     }
     default:

@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { selectNote } from "../actions";
+import { setNoteId } from "../actions";
 
 class Preview extends Component {
   render() {
-    const { note, selectNote } = this.props;
-    return <li onClick={() => selectNote(note.id)}>{note.text}</li>;
+    const { note, setNoteId } = this.props;
+    return <li onClick={() => setNoteId(note.id)}>{note.text}</li>;
   }
 }
 
 const matchDispatchToProps = dispatch => {
-  return bindActionCreators({ selectNote }, dispatch);
+  return bindActionCreators({ setNoteId }, dispatch);
 };
 
 export default connect(

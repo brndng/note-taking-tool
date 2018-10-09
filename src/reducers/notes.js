@@ -1,4 +1,4 @@
-import { deepClone } from '../helpers';
+import { deepClone } from "../helpers";
 
 export default (state = {}, action) => {
   const newState = deepClone(state);
@@ -23,13 +23,22 @@ export default (state = {}, action) => {
     case "DELETE_TAG": {
       const { id, tag } = action.payload;
       const { tags } = newState[id];
-      delete tags[tag]
+      delete tags[tag];
       return newState;
     }
-
     case "TRASH_NOTE": {
       const id = action.payload;
-      newState[id].tags.trash = 'trash';
+      newState[id].tags.trash = "trash";
+      return newState;
+    }
+    case "RESTORE_NOTE": {
+      const id = action.payload;
+      delete newState[id].tags.trash;
+      return newState;
+    }
+    case "DELETE_NOTE": {
+      const id = action.payload;
+      delete newState[id];
       return newState;
     }
     default:

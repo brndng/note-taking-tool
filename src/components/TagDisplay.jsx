@@ -9,7 +9,6 @@ class TagDisplay extends Component {
     const { id, notes, deleteTag } = this.props;
     return (
       <div>
-        <strong>TagDisplay</strong>
         {getTagsById(notes, id).map((tag, i) => {
           return (
             <span onClick={() => deleteTag(id, tag)} key={i}>

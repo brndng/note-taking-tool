@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import NoteDrawer from "./NoteDrawer";
+import CategoryList from "./CategoryList";
 
 class SideBar extends Component {
   render() {
     return (
       <div>
-        <NoteDrawer />
+        <CategoryList />
       </div>
     );
   }

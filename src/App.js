@@ -4,12 +4,16 @@ import { bindActionCreators } from "redux";
 import SideBar from "../src/components/SideBar";
 import PreviewList from "../src/components/PreviewList";
 import CurrentNote from "../src/components/CurrentNote";
-import { loadInitialState } from '../src/actions'
+import { loadInitialState } from "../src/actions";
 
 class App extends Component {
   componentDidMount() {
     const { loadInitialState } = this.props;
     loadInitialState();
+  }
+
+  componentWillMount() {
+    // console.log("unmounting", localStorage);
   }
 
   render() {

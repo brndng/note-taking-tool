@@ -51,16 +51,16 @@ export const deleteTag = (id, tag) => {
   };
 };
 
-export const selectTag = tag => {
+export const setTag = tag => {
   return {
-    type: "SELECT_TAG",
+    type: "SET_TAG",
     payload: tag
   };
 };
 
-export const selectNote = id => {
+export const setNoteId = id => {
   return {
-    type: "SELECT_NOTE",
+    type: "SET_NOTE_ID",
     payload: id
   };
 };

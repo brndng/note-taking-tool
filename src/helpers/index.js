@@ -36,14 +36,6 @@ export function getNotesByTag(notes, tag) {
     .reverse();
 }
 
-export function getInactiveNotes(notes) {
-  return Object.values(notes)
-    .filter(note => {
-      return !note.tags.trash;
-    })
-    .reverse();
-}
-
 export function getNextNote(id, notes, tag) {
   const taggedNotes = getNotesByTag(notes, tag);
   if (!taggedNotes.length) return null;
@@ -53,31 +45,30 @@ export function getNextNote(id, notes, tag) {
   }
 }
 
-export function isOnlyActiveNoteByTag(notes, id, tag) {
-  const clonedNotes = deepClone(notes);
-  delete clonedNotes[id];
-
-  for (let id in clonedNotes) {
-    if (clonedNotes[id].tags[tag] && !clonedNotes[id].tags.trash) return false;
-  }
-  return true;
-}
-
-export const isTrash = tag => {
-  return tag === "trash";
-};
-
-export const getNoteText = (notes, id) => {
-  if (!id) return "";
-  return notes[id].text;
-};
-
-export const getNextId = (id, notes, tag) => {
+export function getNextId(id, notes, tag) {
   const nextNote = getNextNote(id, notes, tag);
   return nextNote ? nextNote.id : null;
-};
+}
 
-export const getMostRecentId = (notes, tag) => {
+export function isOnlyNoteByTag(notes, id, tag) {
+  const taggedNotes = getNotesByTag(notes, tag);
+  return taggedNotes.length < 2;
+}
+
+export function isTrash(tag) {
+  return tag === "trash";
+}
+
+export function isDisabled(notes, tag) {
+  return !getNotesByTag(notes, tag).length;
+}
+
+export function getNoteText(notes, id) {
+  if (!id) return "";
+  return notes[id].text;
+}
+
+export function getMostRecentId(notes, tag) {
   const taggedNotes = getNotesByTag(notes, tag);
   return taggedNotes.length ? taggedNotes[0].id : null;
-};
+}

@@ -1,17 +1,15 @@
 import React, { Component } from "react";
-import TagEntry from "./TagEntry";
+import TagBar from "./TagBar";
 import TextEditor from "./TextEditor";
-import TagDisplay from "./TagDisplay";
-import TrashButton from "./TrashButton";
+import Buttons from "./Buttons";
 
 class CurrentNote extends Component {
   render() {
     return (
       <div>
         <strong>Current Note</strong>
-        <TagEntry />
-        <TagDisplay />
-        <TrashButton />
+        <TagBar />
+        <Buttons />
         <TextEditor />
       </div>
     );
