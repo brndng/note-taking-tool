@@ -11,27 +11,30 @@ class TagEntry extends Component {
     };
   }
 
-  handleChange(e) {
+  setText(e) {
     this.setState({ value: e.target.value });
   }
 
-  handleClick() {
+  submitTag(e) {
     const { addTag, id } = this.props;
+    e.preventDefault();
     addTag(id, this.state.value);
-    this.setState({ value: "" })
+    this.setState({ value: "" });
   }
 
   render() {
-    //TODO: change to onSubmit with e.preventDefault()
     return (
       <div>
         TagEntry
-        <input
-          type="text"
-          value={this.state.value}
-          onChange={e => this.handleChange(e)}
-        />
-        <button onClick={() => this.handleClick()}>Enter</button>
+        <form onSubmit={e => this.submitTag(e)}>
+          <input
+            type="text"
+            placeholder="enter tag"
+            value={this.state.value}
+            onChange={e => this.setText(e)}
+          />
+          <button type="submit">Enter</button>
+        </form>
       </div>
     );
   }

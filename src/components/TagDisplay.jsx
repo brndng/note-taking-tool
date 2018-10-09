@@ -11,7 +11,11 @@ class TagDisplay extends Component {
       <div>
         <strong>TagDisplay</strong>
         {getTagsById(notes, id).map((tag, i) => {
-          return (<span onClick={() => deleteTag(id, tag)} key={i}>{tag}</span>)
+          return (
+            <span onClick={() => deleteTag(id, tag)} key={i}>
+              {tag}
+            </span>
+          );
         })}
       </div>
     );

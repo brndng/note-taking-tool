@@ -12,7 +12,7 @@ class CreateNoteButton extends Component {
 
 const mapStateToProps = ({ tag }) => {
   return { tag };
-}
+};
 
 const matchDispatchToProps = dispatch => {
   return bindActionCreators({ createNote }, dispatch);

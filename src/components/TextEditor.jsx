@@ -2,25 +2,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { editNote } from "../actions";
+import { getNoteText, isTrash } from "../helpers";
 
 class TextEditor extends Component {
-  renderTextArea() {
+  renderCurrentText() {
     const { id, notes, tag, editNote } = this.props;
-    const text = (notes[id] && !notes[id].tags.trash) && notes[id].text;
-    const onChange = (e) => editNote(id, e.target.value);
-    const disabled = tag === 'trash';
-
-    return <textarea
-      value={text}
-      onChange={onChange}
-      disabled={disabled}
-    />
+    return (
+      <textarea
+        value={getNoteText(notes, id)}
+        placeholder="..."
+        onChange={e => editNote(id, e.target.value)}
+        disabled={isTrash(tag)}
+      />
+    );
   }
   render() {
     return (
       <div>
         <strong>Text Editor</strong>
-        {this.renderTextArea()}
+        {this.renderCurrentText()}
       </div>
     );
   }
