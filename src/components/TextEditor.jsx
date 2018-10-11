@@ -20,12 +20,7 @@ class TextEditor extends Component {
     );
   }
   render() {
-    return (
-      <div>
-        <strong>Text Editor</strong>
-        {this.renderTextArea()}
-      </div>
-    );
+    return <div className="text-area-container">{this.renderTextArea()}</div>;
   }
 }
 

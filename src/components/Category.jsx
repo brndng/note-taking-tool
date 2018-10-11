@@ -13,7 +13,7 @@ class Category extends Component {
   }
 
   render() {
-    return <div onClick={() => this.loadCategory()}>{this.props.children}</div>;
+    return <li onClick={() => this.loadCategory()}>{this.props.children}</li>;
   }
 }
 

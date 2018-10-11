@@ -1,0 +1,10 @@
+.App {
+  > div {
+    border: 1px solid black;
+    background: pink;
+  }
+  .preview-list ul li {
+    word-wrap: break-word;
+    border: 1px solid white;
+  }
+}

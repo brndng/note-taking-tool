@@ -7,21 +7,18 @@ class CategoryList extends Component {
   render() {
     const { notes } = this.props;
     return (
-      <div>
-        <strong>CategoryList</strong>
-        <ul>
-          <Category tag={null}>All</Category>
-          {getAllTags(notes).map(
-            (tag, i) =>
-              !isTrash(tag) && (
-                <Category tag={tag} key={i}>
-                  {tag}
-                </Category>
-              )
-          )}
-          <Category tag={"trash"}>Trash</Category>
-        </ul>
-      </div>
+      <ul>
+        <Category tag={null}>All</Category>
+        {getAllTags(notes).map(
+          (tag, i) =>
+            !isTrash(tag) && (
+              <Category tag={tag} key={i}>
+                {tag}
+              </Category>
+            )
+        )}
+        <Category tag={"trash"}>Trash</Category>
+      </ul>
     );
   }
 }

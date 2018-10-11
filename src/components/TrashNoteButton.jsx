@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import Emoji from "./Emoji";
 import { setNoteId, setTag, trashNote } from "../actions";
 import { getNextId, isOnlyNoteByTag, isDisabled } from "../helpers";
 
@@ -18,7 +19,7 @@ class TrashNoteButton extends Component {
         onClick={() => this.sendNoteToTrash()}
         disabled={isDisabled(notes, tag)}
       >
-        Move to Trash
+        🗑
       </button>
     );
   }

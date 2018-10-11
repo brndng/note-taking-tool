@@ -1,0 +1,55 @@
+.App {
+  @include flexContainer(row);
+  > div {
+    @include flexContainer(column);
+  }
+
+  .side-bar {
+    flex: 1;
+    ul {
+      @include flexContainer(column);
+      flex: 1;
+      justify-content: flex-start;
+      li:last-child {
+        margin: auto 0;
+      }
+    }
+  }
+
+  .preview-list {
+    flex: 2;
+    div {
+      @include flexContainer(row);
+      justify-content: flex-end;
+      align-items: center;
+    }
+    ul {
+      @include flexContainer(column);
+      li {
+        flex: 1 1 8em;
+        max-width: 24em;
+      }
+    }
+  }
+
+  .current-note {
+    flex: 4;
+    form {
+      @include flexContainer(row);
+      input[type="text"] {
+        flex: 1 1 auto;
+      }
+    }
+    .button-container {
+      @include flexContainer(row);
+      justify-content: flex-end;
+    }
+    .text-area-container {
+      @include flexContainer(column);
+      flex: 1;
+      textarea {
+        height: 100%;
+      }
+    }
+  }
+}

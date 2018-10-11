@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import "./scss/main.scss";
+
 import SideBar from "../src/components/SideBar";
 import PreviewList from "../src/components/PreviewList";
 import CurrentNote from "../src/components/CurrentNote";

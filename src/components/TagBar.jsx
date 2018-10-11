@@ -7,14 +7,7 @@ import { isTrash } from "../helpers";
 class TagBar extends Component {
   render() {
     const { tag } = this.props;
-    return isTrash(tag) ? (
-      <div />
-    ) : (
-      <div>
-        <TagDisplay />
-        <TagEntry />
-      </div>
-    );
+    return <div>{!isTrash(tag) && [<TagDisplay />, <TagEntry />]}</div>;
   }
 }
 

@@ -4,7 +4,7 @@ import CategoryList from "./CategoryList";
 class SideBar extends Component {
   render() {
     return (
-      <div>
+      <div className="side-bar">
         <CategoryList />
       </div>
     );

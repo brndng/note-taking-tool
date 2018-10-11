@@ -7,15 +7,13 @@ import { isTrash } from "../helpers";
 
 class Buttons extends Component {
   render() {
-    const { tag } = this.props;
-    return isTrash(tag) ? (
-      <div>
-        <RestoreNoteButton />
-        <DeleteNoteButton />
-      </div>
-    ) : (
-      <div>
-        <TrashNoteButton />
+    return (
+      <div className="button-container">
+        {isTrash(this.props.tag) ? (
+          [<RestoreNoteButton />, <DeleteNoteButton />]
+        ) : (
+          <TrashNoteButton />
+        )}
       </div>
     );
   }

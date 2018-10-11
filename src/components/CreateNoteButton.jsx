@@ -6,7 +6,7 @@ import { createNote } from "../actions";
 class CreateNoteButton extends Component {
   render() {
     const { tag, createNote } = this.props;
-    return <button onClick={() => createNote(tag)}>Create Note</button>;
+    return <button onClick={() => createNote(tag)}>+</button>;
   }
 }
 

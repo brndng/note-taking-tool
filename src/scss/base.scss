@@ -1,0 +1,32 @@
+//Mixins
+@mixin flexContainer($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+html,
+body,
+.root,
+.App {
+  height: 100vh;
+  font-size: 100%;
+}
+
+textarea,
+select,
+input,
+button {
+  outline: none;
+}
+
+ul {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  overflow: hidden;
+  list-style: none;
+  padding: 2%;
+}
