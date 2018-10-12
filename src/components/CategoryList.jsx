@@ -8,7 +8,6 @@ class CategoryList extends Component {
     const { notes } = this.props;
     return (
       <ul>
-        <Category tag={null}>All</Category>
         {getAllTags(notes).map(
           (tag, i) =>
             !isTrash(tag) && (
@@ -17,7 +16,6 @@ class CategoryList extends Component {
               </Category>
             )
         )}
-        <Category tag={"trash"}>Trash</Category>
       </ul>
     );
   }

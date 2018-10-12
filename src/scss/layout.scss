@@ -6,13 +6,13 @@
 
   .side-bar {
     flex: 1;
+    > li:last-child {
+      margin: auto 0;
+    }
     ul {
       @include flexContainer(column);
       flex: 1;
       justify-content: flex-start;
-      li:last-child {
-        margin: auto 0;
-      }
     }
   }
 
@@ -25,15 +25,15 @@
     }
     ul {
       @include flexContainer(column);
+      flex: 1;
       li {
-        flex: 1 1 8em;
-        max-width: 24em;
+        flex: 1 1 0;
       }
     }
   }
 
   .current-note {
-    flex: 4;
+    flex: 5;
     form {
       @include flexContainer(row);
       input[type="text"] {
@@ -48,7 +48,7 @@
       @include flexContainer(column);
       flex: 1;
       textarea {
-        height: 100%;
+        flex: 1;
       }
     }
   }

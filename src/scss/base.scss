@@ -8,8 +8,10 @@ html,
 body,
 .root,
 .App {
+  margin: 0em;
   height: 100vh;
   font-size: 100%;
+  box-sizing: border-box;
 }
 
 textarea,
@@ -20,13 +22,21 @@ button {
 }
 
 ul {
-  overflow: hidden;
+  overflow: auto;
   padding: 0;
   margin: 0;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 li {
   overflow: hidden;
   list-style: none;
-  padding: 2%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
 }

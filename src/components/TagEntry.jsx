@@ -28,11 +28,11 @@ class TagEntry extends Component {
         <form onSubmit={e => this.submitTag(e)}>
           <input
             type="text"
-            placeholder="enter tag"
+            placeholder="enter tag..."
             value={this.state.value}
             onChange={e => this.setText(e)}
           />
-          <button type="submit">Enter</button>
+          {/* <button type="submit">➠</button> */}
         </form>
       </div>
     );
