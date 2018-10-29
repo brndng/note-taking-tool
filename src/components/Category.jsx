@@ -5,15 +5,30 @@ import { setTag, setNoteId } from "../actions";
 import { getMostRecentId } from "../helpers";
 
 class Category extends Component {
-  loadCategory() {
+  // loadCategory() {
+  //   const { notes, tag, setTag, setNoteId } = this.props;
+  //   const id = getMostRecentId(notes, tag);
+  //   setTag(tag);
+  //   setNoteId(id);
+  // }
+
+  selectCategory() {
     const { notes, tag, setTag, setNoteId } = this.props;
-    const id = getMostRecentId(notes, tag);
-    setTag(tag);
+    const id = getMostRecentId(notes, tag); //bytag
     setNoteId(id);
+    // const mostRecentNote = getMostRecentNoteByTag(notes, tag);
+    // selectNote(mostRecentNote ? mostRecentNote.id : null);
+    setTag(tag);
   }
 
   render() {
-    return <li onClick={() => this.loadCategory()}>{this.props.children}</li>;
+    const { tag, currentTag } = this.props;
+    const classes = tag === currentTag ? "is-selected" : "";
+    return (
+      <li className={classes} onClick={() => this.selectCategory()}>
+        {this.props.children}
+      </li>
+    );
   }
 }
 

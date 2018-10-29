@@ -17,7 +17,7 @@ class RestoreNoteButton extends Component {
         onClick={() => this.restoreNoteFromTrash()}
         disabled={isDisabled(notes, tag)}
       >
-        ↻
+        Restore
       </button>
     );
   }

@@ -19,7 +19,7 @@ class TrashNoteButton extends Component {
         onClick={() => this.sendNoteToTrash()}
         disabled={isDisabled(notes, tag)}
       >
-        🗑
+        Trash
       </button>
     );
   }

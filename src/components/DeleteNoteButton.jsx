@@ -17,7 +17,7 @@ class DeleteNoteButton extends Component {
         onClick={() => this.deleteNoteFromTrash()}
         disabled={isDisabled(notes, tag)}
       >
-        X
+        Delete
       </button>
     );
   }

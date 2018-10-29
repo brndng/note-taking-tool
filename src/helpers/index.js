@@ -72,3 +72,15 @@ export function getMostRecentId(notes, tag) {
   const taggedNotes = getNotesByTag(notes, tag);
   return taggedNotes.length ? taggedNotes[0].id : null;
 }
+
+export function debounce(fn, delay) {
+  let timer = null;
+
+  return function() {
+    let context = this;
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+      fn.apply(context, [...arguments]);
+    }, delay);
+  };
+}

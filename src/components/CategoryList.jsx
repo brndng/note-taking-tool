@@ -8,14 +8,11 @@ class CategoryList extends Component {
     const { notes } = this.props;
     return (
       <ul>
-        {getAllTags(notes).map(
-          (tag, i) =>
-            !isTrash(tag) && (
-              <Category tag={tag} key={i}>
-                {tag}
-              </Category>
-            )
-        )}
+        {getAllTags(notes).map((tag, i) => (
+          <Category tag={tag} key={tag}>
+            {tag}
+          </Category>
+        ))}
       </ul>
     );
   }
