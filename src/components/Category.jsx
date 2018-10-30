@@ -1,24 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { setTag, setNoteId } from "../actions";
-import { getMostRecentId } from "../helpers";
+import { selectTag, selectNote } from "../actions";
+import { getMostRecentNoteByTag } from "../helpers";
 
 class Category extends Component {
-  // loadCategory() {
-  //   const { notes, tag, setTag, setNoteId } = this.props;
-  //   const id = getMostRecentId(notes, tag);
-  //   setTag(tag);
-  //   setNoteId(id);
-  // }
-
   selectCategory() {
-    const { notes, tag, setTag, setNoteId } = this.props;
-    const id = getMostRecentId(notes, tag); //bytag
-    setNoteId(id);
-    // const mostRecentNote = getMostRecentNoteByTag(notes, tag);
-    // selectNote(mostRecentNote ? mostRecentNote.id : null);
-    setTag(tag);
+    const { notes, tag, selectTag, selectNote } = this.props;
+    const mostRecentNote = getMostRecentNoteByTag(notes, tag);
+    selectNote(mostRecentNote ? mostRecentNote.id : null);
+    selectTag(tag);
   }
 
   render() {
@@ -32,12 +23,12 @@ class Category extends Component {
   }
 }
 
-const mapStateToProps = ({ notes }) => {
-  return { notes };
+const mapStateToProps = ({ notes, currentTag }) => {
+  return { notes, currentTag };
 };
 
 const matchDispatchToProps = dispatch => {
-  return bindActionCreators({ setTag, setNoteId }, dispatch);
+  return bindActionCreators({ selectTag, selectNote }, dispatch);
 };
 
 export default connect(

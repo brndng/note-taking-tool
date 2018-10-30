@@ -6,12 +6,12 @@ import { getNotesByTag, isTrash } from "../helpers";
 
 class PreviewList extends Component {
   render() {
-    const { notes, tag } = this.props;
+    const { notes, currentTag } = this.props;
     return (
       <div className="preview-list">
-        <div>{!isTrash(tag) && <CreateNoteButton />}</div>
+        <div>{!isTrash(currentTag) && <CreateNoteButton />}</div>
         <ul>
-          {getNotesByTag(notes, tag).map((note, i) => {
+          {getNotesByTag(notes, currentTag).map((note, i) => {
             return <Preview note={note} key={i} />;
           })}
         </ul>
@@ -20,8 +20,8 @@ class PreviewList extends Component {
   }
 }
 
-const mapStateToProps = ({ notes, tag }) => {
-  return { notes, tag };
+const mapStateToProps = ({ notes, currentTag }) => {
+  return { notes, currentTag };
 };
 
 export default connect(mapStateToProps)(PreviewList);

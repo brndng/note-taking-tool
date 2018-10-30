@@ -32,7 +32,6 @@ class TagEntry extends Component {
             value={this.state.value}
             onChange={e => this.setText(e)}
           />
-          {/* <button type="submit">➠</button> */}
         </form>
       </div>
     );

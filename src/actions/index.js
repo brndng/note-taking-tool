@@ -14,7 +14,7 @@ export const loadInitialState = () => {
         7: { id: 7, text: "second cats!", tags: { cat: "cat" } },
         8: { id: 8, text: "most recent cats!", tags: { cat: "cat" } }
       },
-      tag: null
+      currentTag: null
     }
   };
 };
@@ -51,16 +51,16 @@ export const deleteTag = (id, tag) => {
   };
 };
 
-export const setTag = tag => {
+export const selectTag = tag => {
   return {
-    type: "SET_TAG",
+    type: "SELECT_TAG",
     payload: tag
   };
 };
 
-export const setNoteId = id => {
+export const selectNote = id => {
   return {
-    type: "SET_NOTE_ID",
+    type: "SELECT_NOTE",
     payload: id
   };
 };
@@ -83,13 +83,5 @@ export const deleteNote = id => {
   return {
     type: "DELETE_NOTE",
     payload: id
-  };
-};
-
-export const clearTrash = (...args) => {
-  console.log("args", args);
-  return {
-    type: "CLEAR_TRASH",
-    payload: args
   };
 };

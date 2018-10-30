@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { setNoteId, restoreNote } from "../actions";
+import { selectNote, restoreNote } from "../actions";
 import { getNextId, isDisabled } from "../helpers";
 
 class RestoreNoteButton extends Component {
   restoreNoteFromTrash() {
-    const { id, notes, tag, setNoteId, restoreNote } = this.props;
+    const { id, notes, currentTag, selectNote, restoreNote } = this.props;
     restoreNote(id);
-    setNoteId(getNextId(id, notes, tag));
+    selectNote(getNextId(id, notes, currentTag));
   }
   render() {
-    const { notes, tag } = this.props;
+    const { notes, currentTag } = this.props;
     return (
       <button
         onClick={() => this.restoreNoteFromTrash()}
-        disabled={isDisabled(notes, tag)}
+        disabled={isDisabled(notes, currentTag)}
       >
         Restore
       </button>
@@ -23,12 +23,12 @@ class RestoreNoteButton extends Component {
   }
 }
 
-const mapStateToProps = ({ id, tag, notes }) => {
-  return { id, tag, notes };
+const mapStateToProps = ({ id, currentTag, notes }) => {
+  return { id, currentTag, notes };
 };
 
 const matchDispatchToProps = dispatch => {
-  return bindActionCreators({ setNoteId, restoreNote }, dispatch);
+  return bindActionCreators({ selectNote, restoreNote }, dispatch);
 };
 
 export default connect(

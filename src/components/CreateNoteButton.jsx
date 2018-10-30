@@ -5,13 +5,13 @@ import { createNote } from "../actions";
 
 class CreateNoteButton extends Component {
   render() {
-    const { tag, createNote } = this.props;
-    return <button onClick={() => createNote(tag)}>Create New</button>;
+    const { currentTag, createNote } = this.props;
+    return <button onClick={() => createNote(currentTag)}>Create New</button>;
   }
 }
 
-const mapStateToProps = ({ tag }) => {
-  return { tag };
+const mapStateToProps = ({ currentTag }) => {
+  return { currentTag };
 };
 
 const matchDispatchToProps = dispatch => {

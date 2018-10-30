@@ -68,9 +68,9 @@ export function getNoteText(notes, id) {
   return notes[id].text;
 }
 
-export function getMostRecentId(notes, tag) {
+export function getMostRecentNoteByTag(notes, tag) {
   const taggedNotes = getNotesByTag(notes, tag);
-  return taggedNotes.length ? taggedNotes[0].id : null;
+  return taggedNotes.length ? taggedNotes[0] : null;
 }
 
 export function debounce(fn, delay) {

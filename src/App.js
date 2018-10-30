@@ -14,10 +14,6 @@ class App extends Component {
     loadInitialState();
   }
 
-  componentWillMount() {
-    // console.log("unmounting", localStorage);
-  }
-
   render() {
     return (
       <div className="App">

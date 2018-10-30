@@ -6,17 +6,17 @@ import { isTrash } from "../helpers";
 
 class TagBar extends Component {
   render() {
-    const { tag } = this.props;
+    const { currentTag } = this.props;
     return (
       <div>
-        {!isTrash(tag) && [<TagDisplay key={1} />, <TagEntry key={2} />]}
+        {!isTrash(currentTag) && [<TagDisplay key={1} />, <TagEntry key={2} />]}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ tag }) => {
-  return { tag };
+const mapStateToProps = ({ currentTag }) => {
+  return { currentTag };
 };
 
 export default connect(mapStateToProps)(TagBar);

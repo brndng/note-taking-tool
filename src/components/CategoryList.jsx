@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Category from "./Category";
-import { getAllTags, isTrash } from "../helpers";
+import { getAllTags } from "../helpers";
 
 class CategoryList extends Component {
   render() {

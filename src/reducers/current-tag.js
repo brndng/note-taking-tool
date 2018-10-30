@@ -1,9 +1,9 @@
 export default (state = "", action) => {
   switch (action.type) {
     case "INIT_APP": {
-      return action.payload.tag;
+      return action.payload.currentTag;
     }
-    case "SET_TAG": {
+    case "SELECT_TAG": {
       return action.payload;
     }
     default:

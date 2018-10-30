@@ -6,14 +6,14 @@ import { getNoteText, getNotesByTag, isTrash } from "../helpers";
 
 class TextEditor extends Component {
   renderTextArea() {
-    const { id, notes, tag, editNote } = this.props;
-    const numberOfNotes = getNotesByTag(notes, tag).length;
+    const { id, notes, currentTag, editNote } = this.props;
+    const numberOfNotes = getNotesByTag(notes, currentTag).length;
     return numberOfNotes > 0 ? (
       <textarea
         value={getNoteText(notes, id)}
         placeholder="..."
         onChange={e => editNote(id, e.target.value)}
-        disabled={isTrash(tag)}
+        disabled={isTrash(currentTag)}
       />
     ) : (
       "No notes!"
@@ -24,8 +24,8 @@ class TextEditor extends Component {
   }
 }
 
-const mapStateToProps = ({ id, notes, tag }) => {
-  return { id, notes, tag };
+const mapStateToProps = ({ id, notes, currentTag }) => {
+  return { id, notes, currentTag };
 };
 
 const matchDispatchToProps = dispatch => {

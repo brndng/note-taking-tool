@@ -9,7 +9,7 @@ class Buttons extends Component {
   render() {
     return (
       <div className="button-container">
-        {isTrash(this.props.tag) ? (
+        {isTrash(this.props.currentTag) ? (
           [<RestoreNoteButton />, <DeleteNoteButton />]
         ) : (
           <TrashNoteButton />
@@ -19,8 +19,8 @@ class Buttons extends Component {
   }
 }
 
-const mapStateToProps = ({ tag }) => {
-  return { tag };
+const mapStateToProps = ({ currentTag }) => {
+  return { currentTag };
 };
 
 export default connect(mapStateToProps)(Buttons);

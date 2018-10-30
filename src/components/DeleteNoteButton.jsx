@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { deleteNote, setNoteId } from "../actions";
+import { deleteNote, selectNote } from "../actions";
 import { isDisabled, getNextId } from "../helpers";
 
 class DeleteNoteButton extends Component {
   deleteNoteFromTrash() {
-    const { id, notes, tag, deleteNote, setNoteId } = this.props;
+    const { id, notes, currentTag, deleteNote, selectNote } = this.props;
     deleteNote(id);
-    setNoteId(getNextId(id, notes, tag));
+    selectNote(getNextId(id, notes, currentTag));
   }
   render() {
-    const { notes, tag } = this.props;
+    const { notes, currentTag } = this.props;
     return (
       <button
         onClick={() => this.deleteNoteFromTrash()}
-        disabled={isDisabled(notes, tag)}
+        disabled={isDisabled(notes, currentTag)}
       >
         Delete
       </button>
@@ -23,12 +23,12 @@ class DeleteNoteButton extends Component {
   }
 }
 
-const mapStateToProps = ({ id, notes, tag }) => {
-  return { id, notes, tag };
+const mapStateToProps = ({ id, notes, currentTag }) => {
+  return { id, notes, currentTag };
 };
 
 const matchDispatchToProps = dispatch => {
-  return bindActionCreators({ deleteNote, setNoteId }, dispatch);
+  return bindActionCreators({ deleteNote, selectNote }, dispatch);
 };
 
 export default connect(

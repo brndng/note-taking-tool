@@ -16,7 +16,7 @@
       word-break: break-all;
       &.is-selected {
         background-color: white;
-        border: 1px solid black;
+        border: 1px dashed black;
       }
     }
   }

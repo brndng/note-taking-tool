@@ -6,7 +6,7 @@ export default (state = "", action) => {
     case "CREATE_NOTE": {
       return action.payload.id;
     }
-    case "SET_NOTE_ID": {
+    case "SELECT_NOTE": {
       return action.payload;
     }
     default:

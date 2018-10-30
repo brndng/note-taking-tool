@@ -1,23 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-// import Emoji from "./Emoji";
-import { setNoteId, setTag, trashNote } from "../actions";
+import { selectNote, selectTag, trashNote } from "../actions";
 import { getNextId, isOnlyNoteByTag, isDisabled } from "../helpers";
 
 class TrashNoteButton extends Component {
   sendNoteToTrash() {
-    const { id, notes, tag, setNoteId, setTag, trashNote } = this.props;
+    const {
+      id,
+      notes,
+      currentTag,
+      selectNote,
+      selectTag,
+      trashNote
+    } = this.props;
     trashNote(id);
-    setNoteId(getNextId(id, notes, tag));
-    if (isOnlyNoteByTag(notes, id, tag)) setTag(null);
+    selectNote(getNextId(id, notes, currentTag));
+    if (isOnlyNoteByTag(notes, id, currentTag)) selectTag(null);
   }
   render() {
-    const { notes, tag } = this.props;
+    const { notes, currentTag } = this.props;
     return (
       <button
         onClick={() => this.sendNoteToTrash()}
-        disabled={isDisabled(notes, tag)}
+        disabled={isDisabled(notes, currentTag)}
       >
         Trash
       </button>
@@ -25,12 +31,12 @@ class TrashNoteButton extends Component {
   }
 }
 
-const mapStateToProps = ({ id, tag, notes }) => {
-  return { id, tag, notes };
+const mapStateToProps = ({ id, currentTag, notes }) => {
+  return { id, currentTag, notes };
 };
 
 const matchDispatchToProps = dispatch => {
-  return bindActionCreators({ setNoteId, setTag, trashNote }, dispatch);
+  return bindActionCreators({ selectNote, selectTag, trashNote }, dispatch);
 };
 
 export default connect(
